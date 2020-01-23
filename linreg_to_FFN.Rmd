@@ -1,0 +1,55 @@
+---
+title: "Linear Regression to Feed Forward Network"
+author: "Theresa Alexander"
+date: "1/23/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#load packages
+```{r}
+
+```
+
+
+#load data
+```{r}
+
+```
+
+
+#linear regression
+```{r}
+
+```
+
+##feature selection?
+```{r}
+
+```
+
+##regularization?
+```{r}
+
+```
+
+
+##PCA (can run on your own and for reference later, won't talk about these results)
+```{r}
+
+```
+
+#Feed Forward Network
+##One layer
+```{r}
+
+```
+
+##More layers
+```{r}
+
+```
+
