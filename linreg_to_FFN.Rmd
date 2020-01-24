@@ -11,45 +11,53 @@ knitr::opts_chunk$set(echo = TRUE)
 
 #load packages
 ```{r}
-
+#caret for easy machine learning workflow
+library(caret)
+#MASS, for computing stepwise regression
+library(MASS)
 ```
 
 
 #load data
 ```{r}
+college = read.csv("~/Downloads/College.csv", row.names =  1, header = TRUE)
 
+college$preference = college$Accept/college$Apps
+#look at first few rows of the data
+head(college)
 ```
 
+We see we have 777 colleges that we've collected data for. We have 18 variables, or "features", we can use in our models. 
 
-#linear regression
+
+#Linear Regression
+
+Remember what the relationship between room board and graduation rate?
 ```{r}
-
+plot(x = college$preference, y = college$Grad.Rate, pch = 19, col = "blue", xlab = "Preference", ylab = "Graduation Rate", main = "Linear Relationship")
 ```
 
-##feature selection?
+
+We see a decent linear relationship here, so let's make a simple linear regression model with the x variable Room.Board and the y variable Grad.Rate to see exactly how much Room Board changes Graduation Rate.
+
+##Research Question 1
+
+How much does Room Board effect the change in Graduation Rate?
+
+Graduation Rate = m * Room Board + b
+
+##Simple Linear Regression
 ```{r}
+#create the linear model using the lm() function
+linear_model = lm(Grad.Rate ~ Room.Board, data = college)
+
+#print the summary of results from the simple linear regression lm() made
+summary(linear_model)
 
 ```
 
-##regularization?
-```{r}
+The lm() function has estimated the the equation to be 
 
-```
+Graduation Rate = 36.46 + .006656 * Room Board, 
 
-
-##PCA (can run on your own and for reference later, won't talk about these results)
-```{r}
-
-```
-
-#Feed Forward Network
-##One layer
-```{r}
-
-```
-
-##More layers
-```{r}
-
-```
-
+which means that the Room Board is $0, the graduation rate is 36.46%. Then, with every dollar increase for the Room Board, the Graduation Rate increases by .007%. 
